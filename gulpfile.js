@@ -14,13 +14,20 @@ var minifyCSS = require('gulp-minify-css');
 // Development Dependencies
 var jshint = require('gulp-jshint');
 var karma = require('gulp-karma');
+var nodemon = require('gulp-nodemon');
 
 
 
 // Lint
 
-gulp.task('lint-app', function() {
+gulp.task('lint-client', function() {
   return gulp.src('./client/**/*.js')
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'));
+});
+
+gulp.task('lint-server', function() {
+  return gulp.src('./server/**/*.js')
     .pipe(jshint())
     .pipe(jshint.reporter('default'));
 });
@@ -34,7 +41,7 @@ gulp.task('lint-test', function() {
 
 
 // Build
-gulp.task('browserify', ['lint-app'], function() {
+gulp.task('browserify', ['lint-client'], function() {
   return gulp.src('client/index.js')
     .pipe(browserify({
       insertGlobals: true
@@ -114,6 +121,7 @@ gulp.task('watch', function() {
   gulp.watch('client/**/*.html', ['browserify', 'test-watch']);
   gulp.watch('test/client/**/*.js', ['browserify', 'test-watch']);
   gulp.watch('client/**/*.less', ['styles']);
+  gulp.watch('server/**/*.js', ['browserify-server', 'test-watch']);
 });
 
 
@@ -124,5 +132,5 @@ gulp.task('watch', function() {
 gulp.task('build', ['uglify', 'minify']);
 
 // Development tasks, just type `gulp`
-gulp.task('default', ['lint-app', 'styles', 'browserify', 'test', 'watch']);
+gulp.task('default', ['lint-client', 'lint-server', 'browserify', 'test', 'watch']);
 
