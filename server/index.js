@@ -1,18 +1,25 @@
 var express = require('express');
 var app = express();
+var publicFolder = __dirname + '/../public';
 
-app.use(require('morgan')());
-app.use(require('body-parser'));
-app.use(require('method-override'));
-app.use(express.static(__dirname + '/../build'));
+app.use(require('morgan')('combined'));
+//app.use(require('body-parser'));
+//app.use(require('method-override'));
 
-app.get('/', function(request, response) {
-  response.json({id: 1, body: 'hello, world'});
+app.set('view engine', 'html');
+app.set('views', publicFolder);
+
+app.engine('html', require('hogan-engine'));
+
+app.get('/', function(req, res) {
+  res.render('index', { title: 'GIFLING' });
 });
 
-app.use(function(error, request, response, next) {
-  response.send(500, 'BROKEN');
-});
+app.use(express.static(publicFolder));
+
+//app.use(function(err, req, res, next) {
+  //res.status(500).send('BROKEN');
+//});
 
 module.exports = app;
 
@@ -22,3 +29,5 @@ if(require.main === module) {
     console.log('Server listening on ' + port);
   });
 }
+
+
