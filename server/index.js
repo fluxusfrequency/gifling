@@ -3,8 +3,6 @@ var app = express();
 var publicFolder = __dirname + '/../public';
 
 app.use(require('morgan')('combined'));
-//app.use(require('body-parser'));
-//app.use(require('method-override'));
 
 app.set('view engine', 'html');
 app.set('views', publicFolder);
@@ -15,11 +13,17 @@ app.get('/', function(req, res) {
   res.render('index', { title: 'GIFLING' });
 });
 
-app.use(express.static(publicFolder));
+app.get('/api/gifs', function(req, res) {
+  res.json({
+    gifs: [
+      'http://media.tumblr.com/tumblr_ln0hhauHUj1qzozj1.gif',
+      'http://i.imgur.com/cxaLeCe.gif',
+      'http://www.clobberblog.com/wp-content/uploads/2013/06/doingitwrong.gif'
+    ]
+  });
+});
 
-//app.use(function(err, req, res, next) {
-  //res.status(500).send('BROKEN');
-//});
+app.use(express.static(publicFolder));
 
 module.exports = app;
 

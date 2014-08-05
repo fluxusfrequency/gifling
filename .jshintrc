@@ -7,7 +7,7 @@
   "immed": true,
   "indent": 2,
   "latedef": "nofunc",
-  "newcap": true,
+  "newcap": false,
   "noarg": true,
   "node": true,
   "nonbsp": true,
@@ -16,7 +16,6 @@
   "unused": "vars",
   "trailing": true,
   "globals": {
-    "$"          : false,
     "after"      : false,
     "afterEach"  : false,
     "before"     : false,
