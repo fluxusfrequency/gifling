@@ -7,11 +7,20 @@ var Folder = require('./folder');
 
 var FoldersList = React.createClass({
   render: function() {
+    var total = 0;
     var folders = this.props.folders.map(function(folder) {
-      return <Folder name={folder.name} count={folder.gifs.length} />;
+      var len = folder.gifs.length;
+      total = total + len;
+      return <Folder name={folder.name} count={len} />;
     });
+
+    var options = {
+      cssClass: 'active'
+    };
+
     return (
       <div className="foldersList">
+        <Folder name="All" count={total} options={options} />
         {folders}
       </div>
     );

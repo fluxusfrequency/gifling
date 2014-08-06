@@ -54,11 +54,22 @@ module.exports = Gifs;
  */
 
 var React = require('react');
+var $ = require('jquery');
 
 var Folder = React.createClass({displayName: 'Folder',
+  handleClick: function() {
+    console.log(this.props.name);
+    $('.active').removeClass('active');
+    $(this.getDOMNode()).addClass('active');
+  },
+
   render: function() {
+    var cssClass = 'folder ';
+    if (this.props.options) {
+      cssClass = cssClass + this.props.options.cssClass;
+    }
     return (
-      React.DOM.div({className: "folder"}, 
+      React.DOM.div({className: cssClass, onClick: this.handleClick}, 
         React.DOM.p(null, this.props.name, " (", this.props.count, ")")
       )
     );
@@ -70,7 +81,7 @@ module.exports = Folder;
 
 
 }).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/components/folders/folder.js","/components/folders")
-},{"1YiZ5S":77,"buffer":74,"react":223}],4:[function(require,module,exports){
+},{"1YiZ5S":77,"buffer":74,"jquery":78,"react":223}],4:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * @jsx React.DOM
@@ -81,11 +92,20 @@ var Folder = require('./folder');
 
 var FoldersList = React.createClass({displayName: 'FoldersList',
   render: function() {
+    var total = 0;
     var folders = this.props.folders.map(function(folder) {
-      return Folder({name: folder.name, count: folder.gifs.length});
+      var len = folder.gifs.length;
+      total = total + len;
+      return Folder({name: folder.name, count: len});
     });
+
+    var options = {
+      cssClass: 'active'
+    };
+
     return (
       React.DOM.div({className: "foldersList"}, 
+        Folder({name: "All", count: total, options: options}), 
         folders
       )
     );
@@ -110,7 +130,6 @@ var Folders = React.createClass({displayName: 'Folders',
   //mixins: [BackboneEvents],
 
   render: function() {
-    debugger;
     var folders = this.props.folders;
     return (
       React.DOM.div({className: "folders-container"}, 
@@ -208,7 +227,7 @@ $(function() {
   window.Gifling = new Gifling();
 });
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_8e04d80c.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_c61c7a3d.js","/")
 },{"./main":10,"1YiZ5S":77,"buffer":74,"jquery":78}],10:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 var $ = require('jquery');

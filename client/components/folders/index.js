@@ -10,7 +10,6 @@ var Folders = React.createClass({
   //mixins: [BackboneEvents],
 
   render: function() {
-    debugger;
     var folders = this.props.folders;
     return (
       <div className="folders-container">
