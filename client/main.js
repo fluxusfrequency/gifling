@@ -1,4 +1,5 @@
 var $ = require('jquery');
+var _ = require('lodash');
 
 var React = require('react');
 window.React = React;
@@ -14,17 +15,18 @@ var MainView = AmpersandView.extend({
     this.gifs = new Gifs();
 
     var injector = {
-      gifs: this.gifs
+      gifs: this.gifs.models
     };
 
     this.router = new Router(injector);
     this.router.history.start({ pushState: false });
 
-    this.home = React.renderComponent(
-      GifsComponent(injector),
-      $('#gifs').get(0)
-    );
-    debugger;
+    this.listenTo(this.gifs, 'sync', _.bind(function() {
+      this.home = React.renderComponent(
+        GifsComponent(injector),
+        $('#gifs').get(0)
+      );
+    }, this));
   },
 
   render: function() {

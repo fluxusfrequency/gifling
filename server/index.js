@@ -16,9 +16,9 @@ app.get('/', function(req, res) {
 app.get('/api/gifs', function(req, res) {
   res.json({
     gifs: [
-      'http://media.tumblr.com/tumblr_ln0hhauHUj1qzozj1.gif',
-      'http://i.imgur.com/cxaLeCe.gif',
-      'http://www.clobberblog.com/wp-content/uploads/2013/06/doingitwrong.gif'
+      { id: 1, url: 'http://media.tumblr.com/tumblr_ln0hhauHUj1qzozj1.gif' },
+      { id: 2, url: 'http://i.imgur.com/cxaLeCe.gif' },
+      { id: 3, url: 'http://www.clobberblog.com/wp-content/uploads/2013/06/doingitwrong.gif'}
     ]
   });
 });
