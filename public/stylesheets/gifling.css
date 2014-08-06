@@ -1482,7 +1482,8 @@ striping:
 }
 .page-title {
   padding: 10px;
-  background-color: #fb24bd;
+  padding-left: 15px;
+  background-color: #25f5fd;
 }
 .gif {
   margin-bottom: 20px;
@@ -1491,13 +1492,13 @@ striping:
   padding-left: 10px;
 }
 .folder {
-  background-color: #25f5fd;
+  background-color: #70f226;
   margin: 0 10px 5px 0;
   padding: 5px 0 5px 5px;
   border: 1px solid #ffe9e9;
 }
 .active {
-  background-color: #70f226;
+  background-color: #fb24bd;
 }
 img {
   max-height: 300px;

@@ -30,7 +30,7 @@ var MainView = AmpersandView.extend({
   },
 
   syncComponent: function(component, collection) {
-    this.listenTo(this[collection], 'sync', _.bind(function() {
+    this.listenTo(this[collection], 'sync', _.bind(function(result) {
       this[collection + 'Component'] = React.renderComponent(
         component(this.injector),
         $('#' + collection).get(0)

@@ -227,7 +227,7 @@ $(function() {
   window.Gifling = new Gifling();
 });
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_c61c7a3d.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_46736059.js","/")
 },{"./main":10,"1YiZ5S":77,"buffer":74,"jquery":78}],10:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 var $ = require('jquery');
@@ -262,7 +262,7 @@ var MainView = AmpersandView.extend({
   },
 
   syncComponent: function(component, collection) {
-    this.listenTo(this[collection], 'sync', _.bind(function() {
+    this.listenTo(this[collection], 'sync', _.bind(function(result) {
       this[collection + 'Component'] = React.renderComponent(
         component(this.injector),
         $('#' + collection).get(0)

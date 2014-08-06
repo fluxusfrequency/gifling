@@ -40,7 +40,8 @@
     "hogan-engine": "^0.9.2",
     "backbone-events-standalone": "^0.2.2",
     "jquery": "^2.1.1",
-    "reactify": "^0.14.0"
+    "reactify": "^0.14.0",
+    "mongoose": "^3.8.14"
   },
   "browserify": {
     "transform": [
