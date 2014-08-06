@@ -8,31 +8,40 @@ var AmpersandView = require('ampersand-view');
 
 var Router = require('./router');
 var Gifs = require('./collections/gifs');
+var Folders = require('./collections/folders');
 var GifsComponent = require('./components/gifs');
+var FoldersComponent = require('./components/folders');
 
 var MainView = AmpersandView.extend({
   initialize: function() {
     this.gifs = new Gifs();
+    this.folders = new Folders();
 
-    var injector = {
-      gifs: this.gifs.models
+    this.injector = {
+      gifs: this.gifs.models,
+      folders: this.folders.models
     };
 
-    this.router = new Router(injector);
+    this.router = new Router(this.injector);
     this.router.history.start({ pushState: false });
 
-    this.listenTo(this.gifs, 'sync', _.bind(function() {
-      this.home = React.renderComponent(
-        GifsComponent(injector),
-        $('#gifs').get(0)
+    this.syncComponent(GifsComponent, 'gifs');
+    this.syncComponent(FoldersComponent, 'folders');
+  },
+
+  syncComponent: function(component, collection) {
+    this.listenTo(this[collection], 'sync', _.bind(function() {
+      this[collection + 'Component'] = React.renderComponent(
+        component(this.injector),
+        $('#' + collection).get(0)
       );
     }, this));
   },
 
   render: function() {
     return this;
-  },
-
+  }
 });
+
 
 module.exports = MainView;

@@ -11,7 +11,7 @@ var GifsList = React.createClass({
       return <Gif link={gif.url} />;
     });
     return (
-      <div className="gifsList">
+      <div className="gifsList pure-g">
         {gifs}
       </div>
     );

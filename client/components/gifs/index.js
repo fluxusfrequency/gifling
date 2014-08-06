@@ -12,8 +12,8 @@ var Gifs = React.createClass({
   render: function() {
     var gifs = this.props.gifs;
     return (
-      <div className="gifsContainer">
-        <h1>All the gifs</h1>
+      <div className="gifs-container">
+        <h2>All the gifs</h2>
         <GifsList gifs={gifs} />
       </div>
     );
