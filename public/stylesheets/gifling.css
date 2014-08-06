@@ -1485,6 +1485,14 @@ striping:
   padding-left: 15px;
   background-color: #25f5fd;
 }
+.new-gif h2 {
+  display: inline;
+  margin-right: 10px;
+}
+.new-gif input {
+  width: 60%;
+  display: inline;
+}
 .gif {
   margin-bottom: 20px;
 }

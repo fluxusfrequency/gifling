@@ -12,7 +12,7 @@ var Folders = AmpersandRestCollection.extend({
   },
 
   parse: function(response) {
-    return response.folders;
+    return response;
   }
 
 });

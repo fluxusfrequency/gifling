@@ -12,7 +12,7 @@ var Gifs = AmpersandRestCollection.extend({
   },
 
   parse: function(response) {
-    return response.gifs;
+    return response;
   }
 
 });
