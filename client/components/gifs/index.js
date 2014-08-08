@@ -4,10 +4,8 @@
 
 var React = require('react');
 var GifsList = require('./gifs-list');
-//var BackboneEvents = require('backbone-events-standalone');
 
 var Gifs = React.createClass({
-  //mixins: [BackboneEvents],
 
   render: function() {
     var gifs = this.props.gifs;

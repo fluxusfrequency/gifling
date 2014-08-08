@@ -1,12 +1,12 @@
 var mongoose = require('mongoose');
 
 var GifSchema = new mongoose.Schema({
-  url: { type: String, required: true }
+  _url: { type: String, required: true }
 });
 
 GifSchema.methods.toObj = function() {
   return {
-    url: this.url
+    _url: this._url
   };
 };
 

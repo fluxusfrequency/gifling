@@ -8,7 +8,7 @@ var Gifs = AmpersandRestCollection.extend({
   model: GifModel,
 
   initialize: function() {
-    this.fetch();
+    this.gifs = this.fetch();
   },
 
   parse: function(response) {

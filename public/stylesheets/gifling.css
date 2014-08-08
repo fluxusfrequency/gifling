@@ -1481,9 +1481,16 @@ striping:
   border-bottom-width: 0;
 }
 .page-title {
-  padding: 10px;
   padding-left: 15px;
+  width: 100%;
+  position: fixed;
   background-color: #25f5fd;
+}
+.placeholder-title {
+  height: 1px;
+}
+.new-gif {
+  margin-top: 100px;
 }
 .new-gif h2 {
   display: inline;
@@ -1498,6 +1505,12 @@ striping:
 }
 .folders-container {
   padding-left: 10px;
+  position: fixed;
+  top: 100px;
+  width: 23%;
+}
+.folders-container h2 {
+  margin-top: 0;
 }
 .folder {
   background-color: #70f226;

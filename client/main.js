@@ -10,7 +10,7 @@ var Router = require('./router');
 var Gifs = require('./collections/gifs');
 var Folders = require('./collections/folders');
 var GifsComponent = require('./components/gifs');
-var NewGifComponent = require('./components/gifs/new-gif');
+var NewGifView = require('./views/new-gif');
 var FoldersComponent = require('./components/folders');
 
 var MainView = AmpersandView.extend({
@@ -26,10 +26,7 @@ var MainView = AmpersandView.extend({
     this.router = new Router(this.injector);
     this.router.history.start({ pushState: false });
 
-    this.newGif = React.renderComponent(
-      NewGifComponent(this.injector),
-      $('#new-gif').get(0)
-    );
+    this.newGif = new NewGifView({ collection: this.gifs });
 
     this.syncComponent(GifsComponent, 'gifs');
     this.syncComponent(FoldersComponent, 'folders');
