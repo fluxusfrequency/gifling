@@ -1501,6 +1501,10 @@ striping:
   display: inline;
 }
 .gif {
+  margin: 0;
+  padding: 0;
+}
+.gif img {
   margin-bottom: 20px;
 }
 .folders-container {

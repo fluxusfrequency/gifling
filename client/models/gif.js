@@ -4,6 +4,7 @@ var GifModel = AmpersandModel.extend({
   idAttribute: '_id',
 
   props: {
+    _id: 'integer',
     _url: 'string'
   },
 

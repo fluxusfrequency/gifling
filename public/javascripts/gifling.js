@@ -264,7 +264,7 @@ $(function() {
   window.Gifling = new Gifling();
 });
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_67f99b47.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_55a4643d.js","/")
 },{"./main":11,"1YiZ5S":81,"buffer":78,"jquery":82}],11:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 var $ = require('jquery');
@@ -282,23 +282,53 @@ var GifsComponent = require('./components/gifs');
 var NewGifView = require('./views/new-gif');
 var FoldersComponent = require('./components/folders');
 
+function parameterize(name) {
+  var slug = name;
+  slug = slug.replace(/[^-\w\s]/g, '');  // remove unneeded chars
+  slug = slug.replace(/^\s+|\s+$/g, ''); // trim leading/trailing spaces
+  slug = slug.replace(/[-\s]+/g, '-');   // convert spaces to hyphens
+  slug = slug.toLowerCase();
+  return slug;
+}
+
 var MainView = AmpersandView.extend({
   initialize: function() {
     this.gifs = new Gifs();
     this.folders = new Folders();
 
+    this.currentGifs = this.gifs.models;
+    this.currentFolder = null;
+
     this.injector = {
-      gifs: this.gifs.models,
+      gifs: this.currentGifs,
       folders: this.folders.models
     };
 
     this.router = new Router(this.injector);
     this.router.history.start({ pushState: false });
 
+    this.listenTo(this.router, 'route:inFolder', function() {
+      var folderName = _.last(this.router.history.fragment.split('/'));
+      this.currentFolder = folderName;
+      this.filterGifs(folderName);
+      this.gifs.trigger('sync');
+    });
+
     this.newGif = new NewGifView({ collection: this.gifs });
 
     this.syncComponent(GifsComponent, 'gifs');
     this.syncComponent(FoldersComponent, 'folders');
+  },
+
+  filterGifs: function(folderName) {
+    var folder = this.folders.find(function(folder) {
+      return parameterize(folder.name) === this.currentFolder;
+    }, this);
+    var ids = folder.gifs;
+    this.currentGifs = _.filter(this.gifs.models, function(gif) {
+      return _.contains(ids, gif._id);
+    }, this);
+    debugger;
   },
 
   syncComponent: function(component, collection) {
@@ -347,6 +377,7 @@ var GifModel = AmpersandModel.extend({
   idAttribute: '_id',
 
   props: {
+    _id: 'integer',
     _url: 'string'
   },
 
@@ -370,10 +401,14 @@ var Router = AmpersandRouter.extend({
   initialize: function(options) {},
 
   routes: {
-    '': 'home'
+    ''            : 'home',
+    'folder/:name': 'inFolder'
   },
 
-  home: function() {}
+  home: function() {},
+
+  inFolder: function() {
+  }
 
 });
 

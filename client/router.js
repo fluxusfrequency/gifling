@@ -4,10 +4,14 @@ var Router = AmpersandRouter.extend({
   initialize: function(options) {},
 
   routes: {
-    '': 'home'
+    ''            : 'home',
+    'folder/:name': 'inFolder'
   },
 
-  home: function() {}
+  home: function() {},
+
+  inFolder: function() {
+  }
 
 });
 
