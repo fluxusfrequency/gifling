@@ -1519,13 +1519,18 @@ striping:
 .folder {
   background-color: #70f226;
   margin: 0 10px 5px 0;
-  padding: 5px 0 5px 5px;
+  padding: 15px 0 15px 5px;
   border: 1px solid #ffe9e9;
+  display: block;
 }
-.active {
+.active a {
   background-color: #fb24bd;
 }
 img {
   max-height: 300px;
   max-width: 375px;
+}
+a {
+  text-decoration: none;
+  color: black;
 }

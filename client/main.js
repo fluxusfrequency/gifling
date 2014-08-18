@@ -5,6 +5,7 @@ var React = require('react');
 window.React = React;
 
 var AmpersandView = require('ampersand-view');
+var BackboneEvents = require('backbone-events-standalone');
 
 var Router = require('./router');
 var Gifs = require('./collections/gifs');
@@ -13,45 +14,52 @@ var GifsComponent = require('./components/gifs');
 var NewGifView = require('./views/new-gif');
 var FoldersComponent = require('./components/folders');
 
-function parameterize(name) {
-  var slug = name;
-  slug = slug.replace(/[^-\w\s]/g, '');  // remove unneeded chars
-  slug = slug.replace(/^\s+|\s+$/g, ''); // trim leading/trailing spaces
-  slug = slug.replace(/[-\s]+/g, '-');   // convert spaces to hyphens
-  slug = slug.toLowerCase();
-  return slug;
-}
+var parameterize = require('./utilities/parameterize');
 
 var MainView = AmpersandView.extend({
+  mixins: [ BackboneEvents ],
+
   initialize: function() {
+    var self = this;
+
     this.gifs = new Gifs();
     this.folders = new Folders();
 
     this.currentGifs = this.gifs.models;
-    this.currentFolder = null;
 
-    this.injector = {
-      gifs: this.currentGifs,
-      folders: this.folders.models
+    this.currentFolder = null;
+    this.newGif = new NewGifView({ collection: this.gifs });
+
+    this.updateInjector = function() {
+      self.injector = {
+        gifs: self.currentGifs,
+        folders: self.folders.models
+      };
     };
+
+    this.updateInjector();
 
     this.router = new Router(this.injector);
     this.router.history.start({ pushState: false });
 
+    this.syncComponent(GifsComponent, 'gifs');
+    this.syncComponent(FoldersComponent, 'folders');
+
     this.listenTo(this.router, 'route:inFolder', function() {
       var folderName = _.last(this.router.history.fragment.split('/'));
       this.currentFolder = folderName;
-      this.filterGifs(folderName);
+      this.filterGifs();
+      this.updateInjector();
       this.gifs.trigger('sync');
     });
-
-    this.newGif = new NewGifView({ collection: this.gifs });
-
-    this.syncComponent(GifsComponent, 'gifs');
-    this.syncComponent(FoldersComponent, 'folders');
   },
 
-  filterGifs: function(folderName) {
+  filterGifs: function() {
+    if (this.currentFolder === 'all') {
+      this.currentGifs = this.gifs.models;
+      return;
+    }
+
     var folder = this.folders.find(function(folder) {
       return parameterize(folder.name) === this.currentFolder;
     }, this);
@@ -59,7 +67,6 @@ var MainView = AmpersandView.extend({
     this.currentGifs = _.filter(this.gifs.models, function(gif) {
       return _.contains(ids, gif._id);
     }, this);
-    debugger;
   },
 
   syncComponent: function(component, collection) {
