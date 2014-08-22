@@ -8,10 +8,8 @@ var $ = require('jquery');
 
 var FoldersList = React.createClass({
   render: function() {
-    var total = 0;
     var folders = this.props.folders.map(function(folder) {
       var len = folder.gifs.length;
-      total = total + len;
       return <Folder name={folder.name} count={len} folderId={folder._id} />;
     });
 
@@ -19,6 +17,7 @@ var FoldersList = React.createClass({
       cssClass: 'active'
     };
 
+    var total = this.props.total;
     var allId = null;
 
     return (

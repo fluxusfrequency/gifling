@@ -114,10 +114,8 @@ var $ = require('jquery');
 
 var FoldersList = React.createClass({displayName: 'FoldersList',
   render: function() {
-    var total = 0;
     var folders = this.props.folders.map(function(folder) {
       var len = folder.gifs.length;
-      total = total + len;
       return Folder({name: folder.name, count: len, folderId: folder._id});
     });
 
@@ -125,6 +123,7 @@ var FoldersList = React.createClass({displayName: 'FoldersList',
       cssClass: 'active'
     };
 
+    var total = this.props.total;
     var allId = null;
 
     return (
@@ -148,17 +147,15 @@ module.exports = FoldersList;
 
 var React = require('react');
 var FoldersList = require('./folders-list');
-//var BackboneEvents = require('backbone-events-standalone');
 
 var Folders = React.createClass({displayName: 'Folders',
-  //mixins: [BackboneEvents],
-
   render: function() {
     var folders = this.props.folders;
+    var total = this.props.gifs.length;
     return (
       React.DOM.div({className: "folders-container"}, 
         React.DOM.h2(null, "All the folders"), 
-        FoldersList({folders: folders})
+        FoldersList({folders: folders, total: total})
       )
     );
   }
@@ -295,7 +292,7 @@ $(function() {
   window.Gifling = new Gifling();
 });
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_416bfabc.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_3cf0c99.js","/")
 },{"./main":11,"1YiZ5S":82,"buffer":79,"jquery":83}],11:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 var $ = require('jquery');
