@@ -1,4 +1,5 @@
 var $ = require('jquery');
+window.jQuery = $;
 var _ = require('lodash');
 
 var React = require('react');
@@ -44,6 +45,15 @@ var MainView = AmpersandView.extend({
 
     this.syncComponent(GifsComponent, 'gifs');
     this.syncComponent(FoldersComponent, 'folders');
+
+    BackboneEvents.on('addGifToFolder', function(gifId, folderId) {
+      var folder = _.find(self.folders.models, function(model) {
+        return model._id === folderId;
+      });
+      folder.gifs.push(gifId);
+      _.uniq(folder.gifs);
+      folder.save();
+    });
 
     this.listenTo(this.router, 'route:inFolder', function() {
       var folderName = _.last(this.router.history.fragment.split('/'));

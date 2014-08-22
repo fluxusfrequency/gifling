@@ -8,7 +8,7 @@ var Gif = require('./gif');
 var GifsList = React.createClass({
   render: function() {
     var gifs = this.props.gifs.map(function(gif) {
-      return <Gif link={gif._url} />;
+      return <Gif link={gif._url} id={gif._id}/>;
     });
     return (
       <div className="gifsList pure-g">

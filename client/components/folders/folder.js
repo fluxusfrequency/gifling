@@ -6,8 +6,25 @@ var React = require('react');
 var $ = require('jquery');
 var _ = require('lodash');
 var parameterize = require('../../utilities/parameterize');
+var BackboneEvents = require('backbone-events-standalone');
 
 var Folder = React.createClass({
+  mixins: [BackboneEvents],
+  componentDidMount: function() {
+    var $folderLinkNode = $(this.getDOMNode()).find('a');
+    var folderId = this.props.folderId;
+    var saveGifToFolder = function(e, ui) {
+      var gifId = ui.draggable.attr('id');
+      return BackboneEvents.trigger('addGifToFolder', gifId, folderId);
+    };
+
+    $folderLinkNode.droppable({
+      hoverClass: 'drop-active',
+      tolerance: 'pointer',
+      drop: saveGifToFolder
+    });
+  },
+
   handleClick: function() {
     $('.active').removeClass('active');
     $(this.getDOMNode()).addClass('active');

@@ -41,7 +41,7 @@ gulp.task('lint-test', function() {
 
 
 // Build
-gulp.task('browserify', ['lint-client'], function() {
+gulp.task('browserify', function() {
   return gulp.src('client/index.js')
     .pipe(browserify({
       insertGlobals: true
@@ -128,9 +128,9 @@ gulp.task('minify', ['styles'], function() {
 
 // Watch
 gulp.task('watch', function() {
-  gulp.watch('client/**/*.js', ['browserify', 'test-watch']);
-  gulp.watch('client/**/*.html', ['browserify', 'test-watch']);
-  gulp.watch('test/client/**/*.js', ['browserify', 'test-watch']);
+  gulp.watch('client/**/*.js', ['browserify']);
+  gulp.watch('client/**/*.html', ['browserify']);
+  gulp.watch('test/client/**/*.js', ['browserify']);
   gulp.watch('client/**/*.less', ['styles']);
 });
 
@@ -142,5 +142,5 @@ gulp.task('watch', function() {
 gulp.task('build', ['uglify', 'minify']);
 
 // Development tasks, just type `gulp`
-gulp.task('default', ['lint-client', 'lint-server', 'browserify', 'test', 'watch', 'watch-server']);
+gulp.task('default', ['browserify', 'watch', 'watch-server']);
 

@@ -1,7 +1,10 @@
 var AmpersandModel = require('ampersand-model');
 
 var FolderModel = AmpersandModel.extend({
+  idAttribute: '_id',
+
   props: {
+    _id: 'integer',
     name: 'string',
     gifs: 'array'
   },
