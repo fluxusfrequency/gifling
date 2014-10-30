@@ -29,6 +29,8 @@
     "transform": []
   },
   "browser": {
-    "jQuery": "./node_modules/jquery/dist/jquery.js"
+    "handlebars": "./bower_components/handlebars/handlebars.js",
+    "jQuery": "./bower_components/jquery/dist/jquery.js",
+    "ember": "./bower_components/ember/ember.js"
   }
 }
