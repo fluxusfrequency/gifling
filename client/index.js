@@ -1,6 +1,8 @@
-var $ = require('jquery');
-var Gifling = require('./main');
+(function() {
+  'use strict'
 
-$(function() {
-  window.Gifling = new Gifling();
-});
+  var Handlebars = require('handlebars');
+  var Ember = require('ember');
+
+  window.Gifling = Ember.Application.create();
+})();
