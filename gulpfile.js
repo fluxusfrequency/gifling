@@ -13,7 +13,6 @@ var minifyCSS = require('gulp-minify-css');
 
 // Development Dependencies
 var jshint = require('gulp-jshint');
-var karma = require('gulp-karma');
 var nodemon = require('gulp-nodemon');
 
 
@@ -72,39 +71,6 @@ gulp.task('watch-server', function() {
 
 
 
-// Test
-
-gulp.task('test', ['lint-test'], function() {
-  return gulp.src('test/client/index.js')
-    .pipe(browserify({
-      insertGlobals: true
-    }))
-    .pipe(rename('test.js'))
-    .pipe(gulp.dest('build'))
-    .pipe(karma({
-      configFile: 'karma.conf.js',
-      action: 'run'
-    }))
-    .on('error', function(e) { console.log(e); });
-});
-
-gulp.task('test-watch', ['lint-test'], function() {
-  return gulp.src('test/client/index.js')
-    .pipe(browserify({
-      insertGlobals: true
-    }))
-    .pipe(rename('test.js'))
-    .pipe(gulp.dest('build'))
-    .pipe(karma({
-      configFile: 'karma.conf.js',
-      action: 'run',
-      browsers: ['PhantomJS']
-    }))
-    .on('error', function(e) { console.log(e); });
-});
-
-
-
 // Styles
 
 gulp.task('styles', function() {
@@ -130,7 +96,6 @@ gulp.task('minify', ['styles'], function() {
 gulp.task('watch', function() {
   gulp.watch('client/**/*.js', ['browserify']);
   gulp.watch('client/**/*.html', ['browserify']);
-  gulp.watch('test/client/**/*.js', ['browserify']);
   gulp.watch('client/**/*.less', ['styles']);
 });
 
