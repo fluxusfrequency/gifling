@@ -39,7 +39,7 @@ var define, requireModule, require, requirejs;
       if (dep === 'exports') {
         exports = reified[i] = seen;
       } else {
-        reified[i] = requirejs(resolve(dep, name));
+        reified[i] = require(resolve(dep, name));
       }
     }
 

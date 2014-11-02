@@ -1,5 +1,5 @@
 var Ember = require('ember');
-debugger;
+var DS = require('ember-data');
 
 window.Gifling = Ember.Application.create();
 
