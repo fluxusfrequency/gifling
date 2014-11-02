@@ -9,9 +9,9 @@ var FoldersController = require('./controllers/folders-controller');
 var app = express();
 app.use(morgan('combined'));
 app.use(bodyParser.json());
-app.set('view engine', 'html');
+app.set('view engine', 'ejs');
 app.set('views', publicFolder);
-app.engine('html', require('hogan-engine'));
+app.engine('html', require('ejs').renderFile);
 
 require('./connection')();
 
