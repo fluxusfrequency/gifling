@@ -31,6 +31,7 @@
   "browser": {
     "handlebars": "./bower_components/handlebars/handlebars.js",
     "jQuery": "./bower_components/jquery/dist/jquery.js",
-    "ember": "./bower_components/ember/ember.js"
+    "ember": "./bower_components/ember/ember.js",
+    "ember-data": "./bower_components/ember-data/ember-data.js"
   }
 }
