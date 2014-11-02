@@ -7,7 +7,7 @@ window.Gifling = Ember.Application.create();
 
 Gifling.ApplicationAdapter = DS.RESTAdapter;
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_937ea523.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_4b11a7da.js","/")
 },{"1YiZ5S":5,"buffer":2,"ember":7,"ember-data":6}],2:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /*!
@@ -1402,6 +1402,9 @@ process.chdir = function (dir) {
 }).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/../node_modules/gulp-browserify/node_modules/browserify/node_modules/process/browser.js","/../node_modules/gulp-browserify/node_modules/browserify/node_modules/process")
 },{"1YiZ5S":5,"buffer":2}],6:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+
+; Ember = global.Ember = require("/Users/benlewis/code/gifling/vendor/ember/ember.js");
+;__browserify_shim_require__=require;(function browserifyShim(module, exports, require, define, browserify_shim__define__module__export__) {
 (function(global){
 var define, requireModule, require, requirejs;
 
@@ -14150,8 +14153,12 @@ define("ember-inflector/system/string",
  global.DS = requireModule('ember-data')['default'];
  })(this);
 
+; browserify_shim__define__module__export__(typeof DS != "undefined" ? DS : window.DS);
+
+}).call(global, undefined, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
+
 }).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/../vendor/ember-data/ember-data.js","/../vendor/ember-data")
-},{"1YiZ5S":5,"buffer":2}],7:[function(require,module,exports){
+},{"/Users/benlewis/code/gifling/vendor/ember/ember.js":7,"1YiZ5S":5,"buffer":2}],7:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 
 ; jQuery = global.jQuery = require("/Users/benlewis/code/gifling/vendor/jquery/jquery.js");
