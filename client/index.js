@@ -1,12 +1,6 @@
-(function() {
-  'use strict'
+var Ember = require('ember');
+debugger;
 
-  var $ = require('jQuery');
-  var Handlebars = require('handlebars');
-  var Ember = require('ember');
-  var EmberData = require('ember-data');
+window.Gifling = Ember.Application.create();
 
-  window.Gifling = Ember.Application.create();
-
-  Gifling.ApplicationAdapter = DS.RESTAdapter;
-})();
+Gifling.ApplicationAdapter = DS.RESTAdapter;
