@@ -11,7 +11,7 @@ var GifsController = function() {
 
     create: function(req, res) {
       var gif = new Gif({
-        _url: req.body._url
+        url: req.body.url
       });
 
       gif.save(function(err, _gif) {

@@ -74,7 +74,7 @@ gulp.task('watch-server', function() {
 // Styles
 
 gulp.task('styles', function() {
-  return gulp.src('client/index.less')
+  return gulp.src('less/index.less')
     .pipe(less())
     .pipe(prefix({ cascade: true }))
     .pipe(rename('gifling.css'))
@@ -96,7 +96,7 @@ gulp.task('minify', ['styles'], function() {
 gulp.task('watch', function() {
   gulp.watch('client/**/*.js', ['browserify']);
   gulp.watch('client/**/*.html', ['browserify']);
-  gulp.watch('client/**/*.less', ['styles']);
+  gulp.watch('less/**/*.less', ['styles']);
 });
 
 

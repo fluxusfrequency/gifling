@@ -5,4 +5,6 @@
   var Ember = require('ember');
 
   window.Gifling = Ember.Application.create();
+
+  Gifling.ApplicationAdapter = DS.RESTAdapter;
 })();
