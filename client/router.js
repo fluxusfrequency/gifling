@@ -1,21 +1,13 @@
-(function() {
-  'use strict';
+Gifling.Router.map(function() {
+  this.resource('gifs');
+});
 
-  Gifling.Router.map(function() {
-    this.resource('gifs');
-  });
+Gifling.IndexRoute = Ember.Route.extend({
+  return this.transitionTo('gifs');
+});
 
-  Gifling.GifsRoute = Ember.Route.extend({
-    model: function() {
-      return this.store.find('gif');
-    }
-  });
-
-  Gifling.GifsIndexRoute = Ember.Route.extend({
-    model: function() {
-      return this.modelFor('gifs');
-    }
-  });
-
-})();
-
+Gifling.GifsRoute = Ember.Route.extend({
+  model: function() {
+    return Gifling.Gif.find();
+  }
+});

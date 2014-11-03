@@ -3,4 +3,19 @@ var DS = require('ember-data');
 
 window.Gifling = Ember.Application.create();
 
-Gifling.ApplicationAdapter = DS.RESTAdapter;
+require('./controllers');
+require('./models');
+require('./views');
+
+Gifling.ApplicationAdapter = DS.RESTAdapter.extend({
+  namespace: 'api/v1'
+});
+
+Gifling.ApplicationStore = DS.Store.extend({
+  adapter: Gifling.ApplicationAdapter.create()
+});
+
+DS.RESTAdapter.reopen({
+  host: 'http://localhost:8000'
+});
+

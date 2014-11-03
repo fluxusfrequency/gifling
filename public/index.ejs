@@ -10,17 +10,18 @@
 <body id="gifling" class="pure-g">
 
   <script type="text/x-handlebars">
-  <div class="page-title pure-u-1">
-    <h1>{{title}}</h1>
-  </div>
-  <div class="pure-u-1-4"></div>
-  <div id="new-gif" class="pure-u-3-4"></div>
-  <div id="folders" class="pure-u-1-4"></div>
-  {{outlet}}
+    <div class="page-title pure-u-1">
+      <h1>GIFLING</h1>
+    </div>
+    <div class="pure-u-1-4"></div>
+    <div id="new-gif" class="pure-u-3-4"></div>
+    <div id="folders" class="pure-u-1-4"></div>
+    {{outlet}}
   </script>
 
-  <script type="text/x-handlebars" id="gifs-index">
+  <script type="text/x-handlebars" data-template-name="gifs">
     <div id="gifs" class="pure-u-3-4"></div>
+    <h1>yolo</h1>
       <ul>
       {{#each gif in gifs}}
         <li>{{gif.url}}</li>
@@ -28,6 +29,7 @@
       </ul>
     <h1>yolo</h1>
   </script>
+
 </body>
 </html>
 
