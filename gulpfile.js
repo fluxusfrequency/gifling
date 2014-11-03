@@ -4,6 +4,7 @@ var rename = require('gulp-rename');
 
 // Build Dependencies
 var browserify = require('gulp-browserify');
+var derequire = require('gulp-derequire');
 var uglify = require('gulp-uglify');
 
 // Style Dependencies
@@ -40,7 +41,7 @@ gulp.task('lint-test', function() {
 
 
 // Build
-gulp.task('browserify', function() {
+gulp.task('browserify', ['derequire'], function() {
   return gulp.src('client/index.js')
     .pipe(browserify({
       insertGlobals: true
@@ -48,6 +49,15 @@ gulp.task('browserify', function() {
     .pipe(rename('gifling.js'))
     .pipe(gulp.dest('build'))
     .pipe(gulp.dest('public/javascripts'))
+    .on('error', function(e) { console.log(e); });
+});
+
+gulp.task('derequire', function() {
+  return gulp.src('bower_components/ember-data/ember-data.js')
+    .pipe(browserify())
+    .pipe(derequire())
+    .pipe(rename('ember-data-derequired.js'))
+    .pipe(gulp.dest('vendor/ember-data/'))
     .on('error', function(e) { console.log(e); });
 });
 
