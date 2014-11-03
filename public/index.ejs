@@ -16,16 +16,37 @@
       </div>
       <div class="pure-u-1-4"></div>
       <div id="new-gif" class="pure-u-3-4">
-        <input type="text" placeholder="MAKE GIF"/>
+        <div class="new-gif">
+          <h2>Make A Gif</h2>
+          <input type="text"/>
+          <button class="pure-button">MAKE GIF</button>
+        </div>
       </div>
-      <div id="folders" class="pure-u-1-4"></div>
-      <div id="gifs" class="pure-u-3-4"></div>
-      <h1>yolo</h1>
-      <ul>
-        {{#each gif in gifs}}
-          <li>{{gif.url}}</li>
-        {{/each}}
-      </ul>
+      <div id="folders" class="pure-u-1-4">
+        <div class="folders-container">
+          <h2>All The Folders</h2>
+          <div class="folders-list">
+            <div class="active">
+              <a href="#/folder/all" class="folder ui-droppable">
+                <span>ALL (0)</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="gifs" class="pure-u-3-4">
+        <div class="gifs-container">
+          <h2>All The Gifs</h2>
+          <div class="gifs-list pure-g">
+            <div class="gif pure-u-1-2 ui-draggable ui-draggable-handle">
+              <img src="http://www.reactiongifs.com/wp-content/uploads/2011/09/mind_blown.gif">
+            </div>
+            <div class="gif pure-u-1-2 ui-draggable ui-draggable-handle">
+              <img src="http://37.media.tumblr.com/c5334ee34d3a7a8a2cc434aa915ed84b/tumblr_n52nppEkfI1qdlh1io1_400.gif">
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </script>
 
