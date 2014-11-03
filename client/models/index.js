@@ -1,2 +1,1 @@
-require('./folder');
 require('./gif');

@@ -5,7 +5,7 @@ var GifsController = function() {
     index: function(req, res) {
       Gif.find({}, function(err, gifs) {
         if (err) { res.json(err); }
-        res.json(gifs);
+        res.json({gifs: gifs});
       });
     },
 

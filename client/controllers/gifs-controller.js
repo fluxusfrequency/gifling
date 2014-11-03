@@ -1,5 +1,1 @@
-Gifling.GifsController = Ember.ArrayController.extend({
-  model: function() {
-    return this.get('gifs');
-  }
-});
+Gifling.GifsController = Ember.ArrayController.extend({});
