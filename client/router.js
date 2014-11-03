@@ -4,6 +4,7 @@ Gifling.Router.map(function() {
 
 Gifling.GifsRoute = Ember.Route.extend({
   model: function() {
-    Gifling.Gif.find();
+    return this.store.find('gif');
   }
 });
+

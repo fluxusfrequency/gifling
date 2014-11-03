@@ -61617,7 +61617,23 @@ return jQuery;
 }).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/../bower_components/jquery/dist/jquery.js","/../bower_components/jquery/dist")
 },{"1YiZ5S":14,"buffer":11}],4:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
-Gifling.GifsController = Ember.ArrayController.extend({});
+Gifling.GifsController = Ember.ArrayController.extend({
+  actions: {
+    createGif: function() {
+      var url = this.get('newGifUrl');
+      if (!url) { return false; }
+      if (!url.trim()) { return; }
+
+      var gif = this.store.createRecord('gif', {
+        _url: url
+      });
+
+      this.set('newGifUrl', '');
+
+      gif.save();
+    }
+  }
+});
 
 }).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/controllers/gifs-controller.js","/controllers")
 },{"1YiZ5S":14,"buffer":11}],5:[function(require,module,exports){
@@ -61638,6 +61654,11 @@ Gifling.ApplicationSerializer = DS.RESTSerializer.extend({
   }
 });
 
+require('./models');
+require('./controllers');
+require('./views');
+require('./router');
+
 Gifling.ApplicationAdapter = DS.RESTAdapter.extend({
   serializer: Gifling.ApplicationSerializer,
   namespace: 'api/v1'
@@ -61648,12 +61669,8 @@ Gifling.Store = DS.Store.extend({
   adapter: 'Gifling.ApplicationAdapter'
 });
 
-require('./models');
-require('./controllers');
-require('./views');
-require('./router');
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_9df1cfe7.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_b66f4f91.js","/")
 },{"./controllers":5,"./models":8,"./router":9,"./views":10,"1YiZ5S":14,"buffer":11,"ember":1,"ember-data":15}],7:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 Gifling.Gif = DS.Model.extend({
@@ -61675,9 +61692,10 @@ Gifling.Router.map(function() {
 
 Gifling.GifsRoute = Ember.Route.extend({
   model: function() {
-    Gifling.Gif.find();
+    return this.store.find('gif');
   }
 });
+
 
 }).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/router.js","/")
 },{"1YiZ5S":14,"buffer":11}],10:[function(require,module,exports){

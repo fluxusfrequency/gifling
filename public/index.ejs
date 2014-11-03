@@ -8,38 +8,18 @@
   <script src="javascripts/gifling.js"></script>
 </head>
 <body>
+  <script type="text/x-handlebars" data-template-name="gifs">
 
-  <script type="text/x-handlebars" data-template-name="application">
-    <div class="pure-g">
-      <div class="page-title pure-u-1">
-        <h1>GIFLING</h1>
-      </div>
-      <div class="pure-u-1-4"></div>
-      <div id="new-gif" class="pure-u-3-4">
-        <div class="new-gif">
-          <h2>Make A Gif</h2>
-          <input type="text"/>
-          <button class="pure-button">MAKE GIF</button>
-        </div>
-      </div>
-      <div id="folders" class="pure-u-1-4">
-        <div class="folders-container">
-          <h2>All The Folders</h2>
-          <div class="folders-list">
-            <div class="active">
-              <a href="#/folder/all" class="folder ui-droppable">
-                <span>ALL (0)</span>
-              </a>
-            </div>
-          </div>
-        </div>
+    <div class="pure-u-1-4"></div>
+    <div id="new-gif" class="pure-u-3-4">
+      <div class="new-gif">
+        <h2>Make A Gif</h2>
+        {{input type="text" id="new-gif" placeholder="MAKE GIF" value=newGifUrl action="createGif"}}
       </div>
     </div>
-    {{outlet}}
-  </script>
 
-  <script type="text/x-handlebars" data-template-name="gifs">
-    <div id="gifs" class="pure-u-3-4">
+    <div class="pure-u-1-4"></div>
+    <div id="gifs-list" class="pure-u-3-4">
       <div class="gifs-container">
         <h2>All The Gifs</h2>
         <div class="gifs-list pure-g">
@@ -54,7 +34,27 @@
     </div>
   </script>
 
-
-  </body>
-  </html>
+  <script type="text/x-handlebars" data-template-name="application">
+    <div class="pure-g" id="gifling">
+      <div class="page-title pure-u-1">
+        <h1>GIFLING</h1>
+      </div>
+      {{outlet}}
+      <div id="folders" class="pure-u-1-4">
+        <div class="folders-container">
+          <h2>All The Folders</h2>
+          <div class="folders-list">
+            <div class="active">
+              <a href="#/folder/all" class="folder ui-droppable">
+                <span>ALL (0)</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pure-u-3-4"></div>
+    </div>
+  </script>
+</body>
+</html>
 
