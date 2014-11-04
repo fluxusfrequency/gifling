@@ -53,7 +53,7 @@ gulp.task('browserify', ['derequire'], function() {
 });
 
 gulp.task('derequire', function() {
-  return gulp.src('bower_components/ember-data/ember-data.js')
+  return gulp.src('vendor/ember-data/ember-data.js')
     .pipe(browserify())
     .pipe(derequire())
     .pipe(rename('ember-data-derequired.js'))

@@ -9,18 +9,17 @@ Gifling.ApplicationSerializer = DS.RESTSerializer.extend({
   }
 });
 
-require('./models');
-require('./controllers');
-require('./views');
-require('./router');
-
 Gifling.ApplicationAdapter = DS.RESTAdapter.extend({
   serializer: Gifling.ApplicationSerializer,
   namespace: 'api/v1'
 });
 
-Gifling.Store = DS.Store.extend({
-  revision: 12,
+Gifling.ApplicationStore = DS.Store.extend({
   adapter: 'Gifling.ApplicationAdapter'
 });
+
+require('./models');
+require('./controllers');
+require('./views');
+require('./router');
 

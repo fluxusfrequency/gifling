@@ -1,6 +1,5 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
 (function(global){
-var define, requireModule, _dereq_, requirejs;
+var define, requireModule, require, requirejs;
 
 (function() {
 
@@ -40,7 +39,7 @@ var define, requireModule, _dereq_, requirejs;
       if (dep === 'exports') {
         exports = reified[i] = seen;
       } else {
-        reified[i] = _dereq_(resolve(dep, name));
+        reified[i] = require(resolve(dep, name));
       }
     }
 
@@ -50,7 +49,7 @@ var define, requireModule, _dereq_, requirejs;
     };
   }
 
-  requirejs = _dereq_ = requireModule = function(name) {
+  requirejs = require = requireModule = function(name) {
     if (state[name] !== FAILED &&
         seen.hasOwnProperty(name)) {
       return seen[name];
@@ -12746,4 +12745,3 @@ define("ember-inflector/system/string",
   });
  global.DS = requireModule('ember-data')['default'];
  })(this);
-},{}]},{},[1])
