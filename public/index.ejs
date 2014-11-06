@@ -25,7 +25,7 @@
         <div class="gifs-list pure-g">
           {{#each}}
           <div class="gif pure-u-1-2 ui-draggable ui-draggable-handle">
-            <img {{bind-attr src=src}} alt="Logo">
+            <img {{bind-attr src=src}} onerror="this.src = 'http://placekitten.com/g/400/400'" alt="Logo">
           </div>
           {{/each}}
         </div>

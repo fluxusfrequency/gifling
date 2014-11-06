@@ -61648,15 +61648,15 @@ var DS = require('ember-data');
 
 window.Gifling = Ember.Application.create({ LOG_TRANSITIONS: true });
 
-//Gifling.ApplicationSerializer = DS.RESTSerializer.extend({
-  //primaryKey: '_id'
-//});
+Gifling.ApplicationSerializer = DS.RESTSerializer.extend({
+  primaryKey: '_id'
+});
 
-//Gifling.ApplicationAdapter = DS.RESTAdapter.extend({
-  //namespace: 'api/v1'
-//});
+Gifling.ApplicationAdapter = DS.RESTAdapter.extend({
+  namespace: 'api/v1'
+});
 
-Gifling.ApplicationAdapter = DS.FixtureAdapter;
+//Gifling.ApplicationAdapter = DS.FixtureAdapter;
 
 Gifling.ApplicationStore = DS.Store.extend({
   adapter: 'Gifling.ApplicationAdapter'
@@ -61668,7 +61668,7 @@ require('./views');
 require('./router');
 
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_1b7bb1.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_697c386f.js","/")
 },{"./controllers":5,"./models":8,"./router":9,"./views":10,"1YiZ5S":14,"buffer":11,"ember":1,"ember-data":15}],7:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 Gifling.Gif = DS.Model.extend({
