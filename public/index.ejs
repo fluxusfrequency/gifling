@@ -14,7 +14,7 @@
     <div id="new-gif" class="pure-u-3-4">
       <div class="new-gif">
         <h2>Make A Gif</h2>
-        {{input type="text" id="new-gif" placeholder="MAKE GIF" value=newGifUrl action="createGif"}}
+        {{input type="text" id="new-gif" placeholder="MAKE GIF" value=newGifSrc action="createGif"}}
       </div>
     </div>
 
@@ -23,12 +23,11 @@
       <div class="gifs-container">
         <h2>All The Gifs</h2>
         <div class="gifs-list pure-g">
+          {{#each}}
           <div class="gif pure-u-1-2 ui-draggable ui-draggable-handle">
-            <img src="http://www.reactiongifs.com/wp-content/uploads/2011/09/mind_blown.gif">
+            <img {{bind-attr src=src}} alt="Logo">
           </div>
-          <div class="gif pure-u-1-2 ui-draggable ui-draggable-handle">
-            <img src="http://37.media.tumblr.com/c5334ee34d3a7a8a2cc434aa915ed84b/tumblr_n52nppEkfI1qdlh1io1_400.gif">
-          </div>
+          {{/each}}
         </div>
       </div>
     </div>

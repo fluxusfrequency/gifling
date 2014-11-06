@@ -61620,15 +61620,15 @@ return jQuery;
 Gifling.GifsController = Ember.ArrayController.extend({
   actions: {
     createGif: function() {
-      var url = this.get('newGifUrl');
-      if (!url) { return false; }
-      if (!url.trim()) { return; }
+      var src = this.get('newGifSrc');
+      if (!src) { return false; }
+      if (!src.trim()) { return; }
 
       var gif = this.store.createRecord('gif', {
-        _url: url
+        src: src
       });
 
-      this.set('newGifUrl', '');
+      this.set('newGifSrc', '');
 
       gif.save();
     }
@@ -61648,13 +61648,15 @@ var DS = require('ember-data');
 
 window.Gifling = Ember.Application.create({ LOG_TRANSITIONS: true });
 
-Gifling.ApplicationSerializer = DS.RESTSerializer.extend({
-  primaryKey: '_id'
-});
+//Gifling.ApplicationSerializer = DS.RESTSerializer.extend({
+  //primaryKey: '_id'
+//});
 
-Gifling.ApplicationAdapter = DS.RESTAdapter.extend({
-  namespace: 'api/v1'
-});
+//Gifling.ApplicationAdapter = DS.RESTAdapter.extend({
+  //namespace: 'api/v1'
+//});
+
+Gifling.ApplicationAdapter = DS.FixtureAdapter;
 
 Gifling.ApplicationStore = DS.Store.extend({
   adapter: 'Gifling.ApplicationAdapter'
@@ -61666,13 +61668,27 @@ require('./views');
 require('./router');
 
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_bcc0abf7.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_1b7bb1.js","/")
 },{"./controllers":5,"./models":8,"./router":9,"./views":10,"1YiZ5S":14,"buffer":11,"ember":1,"ember-data":15}],7:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 Gifling.Gif = DS.Model.extend({
-  url: DS.attr('string')
+  src: DS.attr('string')
 });
 
+Gifling.Gif.FIXTURES = [
+  {
+    id: 1,
+    src: 'http://33.media.tumblr.com/17dc6cad3ad047962e9856c7caf8517a/tumblr_mjubj9m14i1ryn1ejo1_250.gif'
+  },
+  {
+    id: 2,
+    src: 'http://37.media.tumblr.com/c5334ee34d3a7a8a2cc434aa915ed84b/tumblr_n52nppEkfI1qdlh1io1_400.gif'
+  },
+  {
+    id: 3,
+    src: 'https://files.slack.com/files-pri/T024Z5CQB-F02QN24HB/no-way.gif'
+  }
+];
 
 }).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/models/gif.js","/models")
 },{"1YiZ5S":14,"buffer":11}],8:[function(require,module,exports){

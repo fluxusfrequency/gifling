@@ -1,15 +1,15 @@
 Gifling.GifsController = Ember.ArrayController.extend({
   actions: {
     createGif: function() {
-      var url = this.get('newGifUrl');
-      if (!url) { return false; }
-      if (!url.trim()) { return; }
+      var src = this.get('newGifSrc');
+      if (!src) { return false; }
+      if (!src.trim()) { return; }
 
       var gif = this.store.createRecord('gif', {
-        _url: url
+        src: src
       });
 
-      this.set('newGifUrl', '');
+      this.set('newGifSrc', '');
 
       gif.save();
     }
