@@ -9,12 +9,12 @@
 </head>
 <body>
   <script type="text/x-handlebars" data-template-name="gifs">
-
     <div class="pure-u-1-4"></div>
     <div id="new-gif" class="pure-u-3-4">
       <div class="new-gif">
         <h2>Make A Gif</h2>
         {{input type="text" id="new-gif" placeholder="MAKE GIF" value=newGifSrc action="createGif"}}
+        <button {{action "createGif"}} class="pure-button button-secondary">YOLO</button>
       </div>
     </div>
 
@@ -23,14 +23,31 @@
       <div class="gifs-container">
         <h2>All The Gifs</h2>
         <div class="gifs-list pure-g">
-          {{#each}}
+          {{#each itemController="gif"}}
           <div class="gif pure-u-1-2 ui-draggable ui-draggable-handle">
             <img {{bind-attr src=src}} onerror="this.src = 'http://placekitten.com/g/400/400'" alt="Logo">
+            <a href="#" {{action "removeGif"}} class="destroy">X</a>
           </div>
           {{/each}}
         </div>
       </div>
     </div>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="folders">
+    <div id="folders" class="pure-u-1-4">
+      <div class="folders-container">
+        <h2>All The Folders</h2>
+        <div class="folders-list">
+          <div class="active">
+            <a href="#/folder/all" class="folder ui-droppable">
+              <span>ALL (0)</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pure-u-3-4"></div>
   </script>
 
   <script type="text/x-handlebars" data-template-name="application">
@@ -39,21 +56,9 @@
         <h1>GIFLING</h1>
       </div>
       {{outlet}}
-      <div id="folders" class="pure-u-1-4">
-        <div class="folders-container">
-          <h2>All The Folders</h2>
-          <div class="folders-list">
-            <div class="active">
-              <a href="#/folder/all" class="folder ui-droppable">
-                <span>ALL (0)</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="pure-u-3-4"></div>
+      {{outlet folders}}
     </div>
   </script>
+
 </body>
 </html>
-

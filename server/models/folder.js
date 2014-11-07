@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var FolderSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  gifs: { type: Array, default: [] }
+  gifs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Gif' }]
 });
 
 FolderSchema.methods.toObj = function() {

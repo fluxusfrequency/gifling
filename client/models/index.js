@@ -1,1 +1,2 @@
+require('./folder');
 require('./gif');

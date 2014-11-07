@@ -7,18 +7,17 @@ Gifling.ApplicationSerializer = DS.RESTSerializer.extend({
   primaryKey: '_id'
 });
 
-Gifling.ApplicationAdapter = DS.RESTAdapter.extend({
-  namespace: 'api/v1'
-});
-
-//Gifling.ApplicationAdapter = DS.FixtureAdapter;
-
-Gifling.ApplicationStore = DS.Store.extend({
+Gifling.Store = DS.Store.extend({
   adapter: 'Gifling.ApplicationAdapter'
 });
 
+require('./serializers');
 require('./models');
 require('./controllers');
 require('./views');
 require('./router');
+
+Gifling.ApplicationAdapter = DS.RESTAdapter.extend({
+  namespace: 'api/v1'
+});
 
