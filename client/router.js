@@ -8,8 +8,8 @@ Gifling.GifsRoute = Ember.Route.extend({
   },
 
   setupController: function() {
-    this.controllerFor('folders').set('model', this.store.get('folder'));
-    return this.controllerFor('gifs').set('model', this.store.get('gif'));
+    this.controllerFor('folders').set('model', this.store.find('folder'));
+    return this.controllerFor('gifs').set('model', this.store.find('gif'));
   },
 
   renderTemplate: function() {
@@ -21,4 +21,3 @@ Gifling.GifsRoute = Ember.Route.extend({
     });
   }
 });
-

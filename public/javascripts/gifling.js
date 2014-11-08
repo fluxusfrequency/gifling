@@ -61617,6 +61617,7 @@ return jQuery;
 }).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/../bower_components/jquery/dist/jquery.js","/../bower_components/jquery/dist")
 },{"1YiZ5S":20,"buffer":17}],4:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+Gifling.FolderController = Ember.ObjectController.extend({});
 
 }).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/controllers/folder-controller.js","/controllers")
 },{"1YiZ5S":20,"buffer":17}],5:[function(require,module,exports){
@@ -61710,7 +61711,7 @@ Gifling.ApplicationAdapter = DS.RESTAdapter.extend({
 });
 
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_d0c1599d.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_1a7aee35.js","/")
 },{"./controllers":8,"./models":12,"./router":13,"./serializers":15,"./views":16,"1YiZ5S":20,"buffer":17,"ember":1,"ember-data":21}],10:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 Gifling.Folder = DS.Model.extend({
@@ -61723,7 +61724,8 @@ Gifling.Folder = DS.Model.extend({
 },{"1YiZ5S":20,"buffer":17}],11:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 Gifling.Gif = DS.Model.extend({
-  src: DS.attr('string')
+  src: DS.attr('string'),
+  tags: DS.attr('array')
 });
 
 }).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/models/gif.js","/models")
@@ -61745,8 +61747,8 @@ Gifling.GifsRoute = Ember.Route.extend({
   },
 
   setupController: function() {
-    this.controllerFor('folders').set('model', this.store.get('folder'));
-    return this.controllerFor('gifs').set('model', this.store.get('gif'));
+    this.controllerFor('folders').set('model', this.store.find('folder'));
+    return this.controllerFor('gifs').set('model', this.store.find('gif'));
   },
 
   renderTemplate: function() {
@@ -61758,7 +61760,6 @@ Gifling.GifsRoute = Ember.Route.extend({
     });
   }
 });
-
 
 }).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/router.js","/")
 },{"1YiZ5S":20,"buffer":17}],14:[function(require,module,exports){
