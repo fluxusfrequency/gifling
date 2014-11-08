@@ -41,14 +41,17 @@
         <div class="folders-container">
           <div class="folders-list">
             <div class="active">
-              <a href="#/folder/all" class="folder ui-droppable">
-                <span>ALL (0)</span>
+              <a href="#" class="folder ui-droppable">
+                <span>ALL (0) </span>
               </a>
             </div>
             {{#each itemController="folder"}}
-              <a href="#" class="folder ui-droppable">
+              <div class="folder ui-droppable">
+              <a href="#">
                 <span>{{name}} (0)</span>
               </a>
+              <a href="#" {{action "removeFolder"}} class="destroy">X</a>
+              </div>
             {{/each}}
           </div>
         </div>

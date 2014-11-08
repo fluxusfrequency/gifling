@@ -1536,6 +1536,9 @@ striping:
   border: 1px solid #ffe9e9;
   display: block;
 }
+.folder a {
+  display: inline;
+}
 .active a {
   background-color: #fb24bd;
 }

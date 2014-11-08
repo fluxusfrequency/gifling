@@ -18,10 +18,12 @@ var FoldersController = function() {
       });
     },
 
-    update: function(req, res) {
-      Folder.update({ _id: req.body._id }, { gifs: req.body.gifs }, function(err, affected, folder) {
-        if (err) { res.json(err); }
-        res.send(folder);
+    destroy: function(req, res) {
+      Folder.findOne(req.params.id, function(err, _folder) {
+        _folder.remove(function(err, _folder) {
+          if(err) { res.json(err); }
+          res.json('Success');
+        });
       });
     }
   };

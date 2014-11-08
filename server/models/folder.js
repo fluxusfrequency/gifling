@@ -1,14 +1,12 @@
 var mongoose = require('mongoose');
 
 var FolderSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  gifs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Gif' }]
+  name: { type: String, required: true, unique: true }
 });
 
 FolderSchema.methods.toObj = function() {
   return {
-    name: this.name,
-    gifs: this.gifs
+    name: this.name
   };
 };
 
