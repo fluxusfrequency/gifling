@@ -13,6 +13,7 @@
   padding-left: 15px;
   width: 100%;
   position: fixed;
+  z-index: 1;
   background-color: rgb(37, 245, 253);
 }
 
@@ -20,14 +21,27 @@
   height: 1px;
 }
 
-#new-gif {
+#new-gif-input {
   vertical-align: bottom;
 }
 
-.new-gif {
+#gif-section {
   margin-top: 100px;
+}
+
+#folder-section {
+  margin-top: 100px;
+  position: fixed;
+  padding-left: 10px;
+}
+
+.folder-header {
+  margin-bottom: 30px;
+}
+
+.gif-header {
+  margin-bottom: 30px;
   h2 {
-    display: inline;
     vertical-align: bottom;
     margin-right: 10px;
     position: relative;
@@ -56,10 +70,6 @@
   h2 {
     margin-top: 0;
   }
-  padding-left: 10px;
-  position: fixed;
-  top: 100px;
-  width: 23%;
 }
 
 .folder {

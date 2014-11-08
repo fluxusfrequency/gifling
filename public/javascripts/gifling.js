@@ -1,8 +1,8 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 
-; jQuery = global.jQuery = require("/Users/benlewis/Dropbox/Code/gifling/bower_components/jquery/dist/jquery.js");
-Handlebars = global.Handlebars = require("/Users/benlewis/Dropbox/Code/gifling/bower_components/handlebars/handlebars.js");
+; jQuery = global.jQuery = require("/Users/benlewis/code/gifling/bower_components/jquery/dist/jquery.js");
+Handlebars = global.Handlebars = require("/Users/benlewis/code/gifling/bower_components/handlebars/handlebars.js");
 ;__browserify_shim_require__=require;(function browserifyShim(module, exports, require, define, browserify_shim__define__module__export__) {
 /*!
  * @overview  Ember - JavaScript Application Framework
@@ -49661,7 +49661,7 @@ requireModule("ember");
 }).call(global, undefined, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
 
 }).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/../bower_components/ember/ember.js","/../bower_components/ember")
-},{"/Users/benlewis/Dropbox/Code/gifling/bower_components/handlebars/handlebars.js":2,"/Users/benlewis/Dropbox/Code/gifling/bower_components/jquery/dist/jquery.js":3,"1YiZ5S":20,"buffer":17}],2:[function(require,module,exports){
+},{"/Users/benlewis/code/gifling/bower_components/handlebars/handlebars.js":2,"/Users/benlewis/code/gifling/bower_components/jquery/dist/jquery.js":3,"1YiZ5S":20,"buffer":17}],2:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 ;__browserify_shim_require__=require;(function browserifyShim(module, exports, require, define, browserify_shim__define__module__export__) {
 /*!
@@ -61636,8 +61636,8 @@ Gifling.FoldersController = Ember.ArrayController.extend({
   actions: {
     createFolder: function() {
       var name = this.get('newFolderName');
-      if (!src) { return false; }
-      if (!src.trim()) { return; }
+      if (!name) { return false; }
+      if (!name.trim()) { return; }
 
       var folder = this.store.createRecord('folder', {
         name: name
@@ -61721,7 +61721,7 @@ Gifling.ApplicationAdapter = DS.RESTAdapter.extend({
 });
 
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_a16cbe50.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_aaefd25c.js","/")
 },{"./controllers":8,"./models":12,"./router":13,"./serializers":15,"./views":16,"1YiZ5S":20,"buffer":17,"ember":1,"ember-data":21}],10:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 Gifling.Folder = DS.Model.extend({
@@ -63195,7 +63195,7 @@ process.chdir = function (dir) {
 },{"1YiZ5S":20,"buffer":17}],21:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 
-; Ember = global.Ember = require("/Users/benlewis/Dropbox/Code/gifling/bower_components/ember/ember.js");
+; Ember = global.Ember = require("/Users/benlewis/code/gifling/bower_components/ember/ember.js");
 ;__browserify_shim_require__=require;(function browserifyShim(module, exports, require, define, browserify_shim__define__module__export__) {
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
 (function(global){
@@ -75936,4 +75936,4 @@ enifed("ember-inflector/system/string",
 }).call(global, undefined, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
 
 }).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/../vendor/ember-data/ember-data-derequired.js","/../vendor/ember-data")
-},{"/Users/benlewis/Dropbox/Code/gifling/bower_components/ember/ember.js":1,"1YiZ5S":20,"buffer":17}]},{},[9])
+},{"/Users/benlewis/code/gifling/bower_components/ember/ember.js":1,"1YiZ5S":20,"buffer":17}]},{},[9])
