@@ -45,6 +45,11 @@
                 <span>ALL (0)</span>
               </a>
             </div>
+            {{#each itemController="folder"}}
+              <a href="#" class="folder ui-droppable">
+                <span>{{name}} (0)</span>
+              </a>
+            {{/each}}
           </div>
         </div>
       </div>

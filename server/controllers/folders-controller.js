@@ -5,7 +5,7 @@ var FoldersController = function() {
     index: function(req, res) {
       Folder.find({}, function(err, folders) {
         if (err) { res.json(err); }
-        res.send(folders);
+        res.send({folders: folders});
       });
     },
 
