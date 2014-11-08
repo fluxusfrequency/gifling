@@ -2,13 +2,13 @@ var mongoose = require('mongoose');
 
 var GifSchema = new mongoose.Schema({
   src: { type: String, required: true },
-  tags: { type: Array, default: [] }
+  folders: { type: Array, default: [] }
 });
 
 GifSchema.methods.toObj = function() {
   return {
     src: this.src,
-    tags: this.tags
+    folders: this.folders
   };
 };
 

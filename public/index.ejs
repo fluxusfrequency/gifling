@@ -18,7 +18,7 @@
         </div>
         <div class="gifs-container">
           <div class="gifs-list pure-g">
-            {{#each itemController="gif"}}
+            {{#each filteredGifs itemController="gif"}}
             <div class="gif pure-u-1-2 ui-draggable ui-draggable-handle">
               <img {{bind-attr src=src}} onerror="this.src = 'http://placekitten.com/g/400/400'" alt="Logo">
               <a href="#" {{action "removeGif"}} class="destroy">X</a>
@@ -47,9 +47,9 @@
             </div>
             {{#each itemController="folder"}}
               <div class="folder ui-droppable">
-              <a href="#">
+              {{#linkTo 'gifs' (query-params folder=name)}}
                 <span>{{name}} (0)</span>
-              </a>
+              {{/linkTo}}
               <a href="#" {{action "removeFolder"}} class="destroy">X</a>
               </div>
             {{/each}}
@@ -62,7 +62,7 @@
   <script type="text/x-handlebars" data-template-name="application">
     <div class="pure-g" id="gifling">
       <div class="page-title pure-u-1">
-        <h1>GIFLING</h1>
+        <a href="#"><h1>GIFLING</h1></a>
       </div>
       <div class="pure-u-1-4">
         {{outlet folders}}

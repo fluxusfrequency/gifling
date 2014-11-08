@@ -61667,6 +61667,24 @@ Gifling.GifController = Ember.ObjectController.extend({
 },{"1YiZ5S":20,"buffer":17}],7:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 Gifling.GifsController = Ember.ArrayController.extend({
+  queryParams: ['folder'],
+
+  folder: null,
+
+  filteredGifs: function() {
+    var folder = this.get('folder');
+    var gifs = this.get('model');
+
+
+    if (folder) {
+      return gifs.filter(function(gif) {
+        return gif.get('folders').contains(folder);
+      });
+    } else {
+      return gifs;
+    }
+  }.property('folder', 'model'),
+
   actions: {
     createGif: function() {
       var src = this.get('newGifSrc');
@@ -61719,7 +61737,7 @@ Gifling.ApplicationAdapter = DS.RESTAdapter.extend({
 });
 
 
-}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_6c465782.js","/")
+}).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_2483f45a.js","/")
 },{"./controllers":8,"./models":12,"./router":13,"./serializers":15,"./views":16,"1YiZ5S":20,"buffer":17,"ember":1,"ember-data":21}],10:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 Gifling.Folder = DS.Model.extend({
@@ -61733,7 +61751,7 @@ Gifling.Folder = DS.Model.extend({
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 Gifling.Gif = DS.Model.extend({
   src: DS.attr('string'),
-  tags: DS.attr('array')
+  folders: DS.attr('array')
 });
 
 }).call(this,require("1YiZ5S"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/models/gif.js","/models")
