@@ -9,6 +9,7 @@ var Router = function(app) {
 
   app.get('/api/v1/folders', app.controllers.folders.index);
   app.post('/api/v1/folders', app.controllers.folders.create);
+  app.put('/api/v1/folders', app.controllers.folders.update);
   app.delete('/api/v1/folders/:id', app.controllers.folders.destroy);
 };
 

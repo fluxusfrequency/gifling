@@ -8,6 +8,13 @@
   <script src="javascripts/gifling.js"></script>
 </head>
 <body>
+  <script type="text/x-handlebars" data-template-name="gif">
+    <div class="gif pure-u-1-2 ui-draggable ui-draggable-handle" {{bind-attr id="elementId"}}>
+      <img {{bind-attr src=src}} onerror="this.src = 'http://placekitten.com/g/400/400'" alt="Logo">
+      <a href="#" {{action "removeGif"}} class="destroy">X</a>
+    </div>
+  </script>
+
   <script type="text/x-handlebars" data-template-name="gifs">
     <div class="pure-g" id="gif-section">
       <div class="pure-u-1">
@@ -19,14 +26,20 @@
         <div class="gifs-container">
           <div class="gifs-list pure-g">
             {{#each filteredGifs itemController="gif"}}
-            <div class="gif pure-u-1-2 ui-draggable ui-draggable-handle">
-              <img {{bind-attr src=src}} onerror="this.src = 'http://placekitten.com/g/400/400'" alt="Logo">
-              <a href="#" {{action "removeGif"}} class="destroy">X</a>
-            </div>
+              {{view 'gif'}}
             {{/each}}
           </div>
         </div>
       </div>
+    </div>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="folder">
+    <div class="folder ui-droppable">
+      <a href="#" {{action "removeFolder"}} class="destroy">X</a>
+      {{#link-to 'gifs' (query-params folder=name)}}
+        <span>{{name}} (0)</span>
+      {{/link-to}}
     </div>
   </script>
 
@@ -46,12 +59,7 @@
               </a>
             </div>
             {{#each itemController="folder"}}
-              <div class="folder ui-droppable">
-              {{#linkTo 'gifs' (query-params folder=name)}}
-                <span>{{name}}</span>
-              {{/linkTo}}
-              <a href="#" {{action "removeFolder"}} class="destroy">X</a>
-              </div>
+              {{view 'folder'}}
             {{/each}}
           </div>
         </div>
