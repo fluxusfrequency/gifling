@@ -30,6 +30,11 @@
   },
   "browserify-shim": {
     "jquery": "jQuery",
+    "jquery-ui": {
+      "depends": [
+        "jquery:jQuery"
+      ]
+    },
     "handlebars": "Handlebars",
     "ember": {
       "exports": "Ember",
@@ -52,6 +57,7 @@
   },
   "browser": {
     "jquery": "./bower_components/jquery/dist/jquery.js",
+    "jquery-ui": "./vendor/jquery-ui/jquery-ui.js",
     "handlebars": "./bower_components/handlebars/handlebars.js",
     "ember": "./bower_components/ember/ember.js",
     "ember-data": "./vendor/ember-data/ember-data-derequired.js"

@@ -42,13 +42,13 @@
           <div class="folders-list">
             <div class="active">
               <a href="#" class="folder ui-droppable">
-                <span>ALL (0) </span>
+                <span>ALL</span>
               </a>
             </div>
             {{#each itemController="folder"}}
               <div class="folder ui-droppable">
               {{#linkTo 'gifs' (query-params folder=name)}}
-                <span>{{name}} (0)</span>
+                <span>{{name}}</span>
               {{/linkTo}}
               <a href="#" {{action "removeFolder"}} class="destroy">X</a>
               </div>
